@@ -77,7 +77,7 @@ public:
      *          objects, because closed ones require an additional argument
      */
     template<typename U = LineType>
-    requires std::is_same_v<U, OpenPolyline>
+        requires std::is_same_v<U, OpenPolyline>
     explicit LinesSet(ClipperLib::Paths&& paths)
     {
         reserve(paths.size());

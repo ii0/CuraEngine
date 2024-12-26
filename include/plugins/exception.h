@@ -4,16 +4,16 @@
 #ifndef PLUGINS_EXCEPTION_H
 #define PLUGINS_EXCEPTION_H
 
-#include "plugins/metadata.h"
-#include "plugins/types.h"
-#include "plugins/validator.h"
-
-#include <fmt/format.h>
-
 #include <exception>
 #include <string>
 #include <string_view>
 #include <utility>
+
+#include <fmt/format.h>
+
+#include "plugins/metadata.h"
+#include "plugins/types.h"
+#include "plugins/validator.h"
 
 namespace cura::plugins::exceptions
 {
@@ -28,13 +28,13 @@ public:
 
     ValidatorException(const auto& validator, const slot_metadata& slot_info, const plugin_metadata& plugin_info) noexcept
         : msg_(fmt::format(
-            "Failed to validate plugin '{}-{}' running at [{}] for slot '{}', version '{}' incompatible with plugin specified slot-version-range '{}'.",
-            plugin_info.plugin_name,
-            plugin_info.plugin_version,
-            plugin_info.peer,
-            slot_info.slot_id,
-            slot_info.version,
-            plugin_info.slot_version_range))
+              "Failed to validate plugin '{}-{}' running at [{}] for slot '{}', version '{}' incompatible with plugin specified slot-version-range '{}'.",
+              plugin_info.plugin_name,
+              plugin_info.plugin_version,
+              plugin_info.peer,
+              slot_info.slot_id,
+              slot_info.version,
+              plugin_info.slot_version_range))
     {
     }
 
@@ -54,12 +54,12 @@ public:
 
     RemoteException(const slot_metadata& slot_info, const plugin_metadata& plugin_info, std::string_view error_msg) noexcept
         : msg_(fmt::format(
-            "Remote exception for plugin '{}-{}' running at [{}] for slot '{}': {}",
-            plugin_info.plugin_name,
-            plugin_info.plugin_version,
-            plugin_info.peer,
-            slot_info.slot_id,
-            error_msg))
+              "Remote exception for plugin '{}-{}' running at [{}] for slot '{}': {}",
+              plugin_info.plugin_name,
+              plugin_info.plugin_version,
+              plugin_info.peer,
+              slot_info.slot_id,
+              error_msg))
     {
     }
 

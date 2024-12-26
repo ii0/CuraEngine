@@ -27,6 +27,6 @@ public:
 };
 
 
-}//namespace cura
+} // namespace cura
 
 #endif // RETRACTION_CONFIG_H
